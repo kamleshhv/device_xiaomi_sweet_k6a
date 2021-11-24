@@ -18,6 +18,7 @@ package org.lineageos.settings.display;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MenuItem;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
@@ -31,27 +32,35 @@ public class DcDimmingSettingsFragment extends PreferenceFragment implements
 
     private SwitchPreference mDcDimmingPreference;
     private static final String DC_DIMMING_ENABLE_KEY = "dc_dimming_enable";
-    private static final String DC_DIMMING_NODE = "/sys/devices/platform/soc/soc:qcom,dsi-display/msm_fb_ea_enable";
+    private static final String DC_DIMMING_NODE = "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dimlayer_bl";
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.dcdimming_settings);
+        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
         mDcDimmingPreference = (SwitchPreference) findPreference(DC_DIMMING_ENABLE_KEY);
-        if (FileUtils.fileExists(DC_DIMMING_NODE)) {
-            mDcDimmingPreference.setEnabled(true);
-            mDcDimmingPreference.setOnPreferenceChangeListener(this);
-        } else {
-            mDcDimmingPreference.setSummary(R.string.dc_dimming_enable_summary_not_supported);
-            mDcDimmingPreference.setEnabled(false);
-        }
+        mDcDimmingPreference.setEnabled(true);
+        mDcDimmingPreference.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (DC_DIMMING_ENABLE_KEY.equals(preference.getKey())) {
-            FileUtils.writeLine(DC_DIMMING_NODE, (Boolean) newValue ? "1":"0");
+            try {
+                FileUtils.writeLine(DC_DIMMING_NODE, (Boolean) newValue ? "1" : "0");
+            } catch(Exception e) {
+            }
         }
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            getActivity().onBackPressed();
+            return true;
+        }
+        return false;
     }
 
 }
