@@ -109,6 +109,12 @@ persist.vendor.audio.fluence.voicecall=true \
 persist.vendor.audio.fluence.voicecomm=true \
 persist.vendor.audio.fluence.voicerec=false
 
+# Audio FX module
+PRODUCT_SYSTEM_PROPERTIES += \
+persist.vendor.audio.spatializer.speaker_enabled=true \
+ro.audio.spatializer_enabled=true \
+audio.spatializer.effect.util_clamp_min=300
+
 # Bluetooth
 PRODUCT_PRODUCT_PROPERTIES += \
 bluetooth.profile.a2dp.source.enabled=true \
