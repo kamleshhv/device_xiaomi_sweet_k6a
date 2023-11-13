@@ -1,3 +1,7 @@
+# Adb
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
 aaudio.hw_burst_min_usec=2000 \
