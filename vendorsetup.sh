@@ -1,2 +1,2 @@
-git clone https://github.com/kamleshhv/vendor_xiaomi_sweetk6a.git vendor/xiaomi/sweet
-git clone --depth=1 https://github.com/Positron-B/kernel_xiaomi_sm6150.git kernel/xiaomi/sweet
+git clone https://github.com/kamleshhv/vendor_xiaomi_sweet_k6a.git vendor/xiaomi/sweet_k6a
+git clone --depth=1 https://github.com/Pulkit077/kernel_xiaomi_sweet_k6a.git kernel/xiaomi/sweet_k6a
