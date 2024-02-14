@@ -73,6 +73,8 @@ TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_CONFIG := vendor/sweet_user_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sweet_k6a
 KERNEL_LD := LD=ld.lld
+TARGET_KERNEL_CLANG_VERSION := proton
+TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/host/linux-x86/proton-clang
 
 # Lineage Health
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
