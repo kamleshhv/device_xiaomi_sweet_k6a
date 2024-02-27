@@ -20,6 +20,9 @@ PRODUCT_BRAND := Redmi
 PRODUCT_MODEL := Redmi Note 10 Pro
 PRODUCT_MANUFACTURER := Xiaomi
 
+PRODUCT_BUILD_PROP_OVERRIDES += \
+PRODUCT_MODEL= Redmi Note 12 Pro
+
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # Inherit some common SuperiorExtendedOS stuff.
